@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Mail, MessageCircle } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { InquiryForm } from "@/components/forms/inquiry-form";
 import { listCategories } from "@/server/services/catalog";
 import { buildWhatsAppLink } from "@/lib/whatsapp/link";
@@ -40,14 +40,6 @@ export default async function KontakPage() {
                 Chat lewat WhatsApp
               </a>
             )}
-          </div>
-          <div className="card p-5">
-            <h2 className="flex items-center gap-2 text-lg">
-              <Mail aria-hidden className="size-5 text-accent" /> Email
-            </h2>
-            <a href={`mailto:${site.email}`} className="mt-2 inline-block break-all font-semibold text-ink underline">
-              {site.email}
-            </a>
           </div>
         </aside>
       </div>

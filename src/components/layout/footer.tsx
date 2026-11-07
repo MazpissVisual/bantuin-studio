@@ -13,7 +13,6 @@ export function Footer() {
           <p className="mt-2 text-sm text-on-field-2">{site.tagline}</p>
           <ul className="mt-4 space-y-1.5 text-sm text-on-field-2">
             <li><a href={`https://wa.me/${site.whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="hover:text-on-field">WhatsApp {site.whatsappDisplay}</a></li>
-            <li><a href={`mailto:${site.email}`} className="break-all hover:text-on-field">{site.email}</a></li>
           </ul>
         </div>
         <div>

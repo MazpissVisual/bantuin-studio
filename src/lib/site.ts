@@ -6,7 +6,6 @@ export const site = {
   // Isi NEXT_PUBLIC_SITE_URL dengan alamat asli saat deploy (dipakai sitemap dan gambar pratinjau).
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   // Format internasional tanpa "+" atau spasi. Bisa ditimpa lewat NEXT_PUBLIC_WHATSAPP_NUMBER.
-  whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "6282374982681",
-  whatsappDisplay: "0823-7498-2681",
-  email: "mazpissiqbal@gmail.com",
+  whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "6285167799904",
+  whatsappDisplay: "0851-6779-9904",
 } as const;

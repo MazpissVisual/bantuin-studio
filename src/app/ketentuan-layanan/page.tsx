@@ -10,7 +10,7 @@ export default function Page() {
       <h2>Ruang lingkup layanan</h2>
       <p>Layanan mencakup kategori yang tercantum di halaman Layanan. Ruang lingkup tiap pekerjaan disepakati sebelum pengerjaan dimulai.</p>
       <h2>Estimasi dan persetujuan</h2>
-      <p>Estimasi bersifat indikatif sampai kamu menyetujui penawaran akhir yang kami kirim lewat WhatsApp atau email.</p>
+      <p>Estimasi bersifat indikatif sampai kamu menyetujui penawaran akhir yang kami kirim lewat WhatsApp.</p>
       <h2>Pembayaran</h2>
       <p>Metode dan waktu pembayaran dijelaskan dalam penawaran dan disepakati sebelum pengerjaan dimulai.</p>
       <h2>Revisi dan perubahan brief</h2>
@@ -29,8 +29,7 @@ export default function Page() {
       </p>
       <h2>Pertanyaan</h2>
       <p>
-        Hubungi kami di <a href={`mailto:${site.email}`} className="font-semibold text-ink underline">{site.email}</a> atau lewat
-        WhatsApp.
+        Hubungi kami lewat WhatsApp {site.whatsappDisplay}.
       </p>
     </LegalPage>
   );

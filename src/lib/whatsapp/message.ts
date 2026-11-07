@@ -3,7 +3,6 @@ export type InquiryMessageInput = {
   categoryName: string;
   serviceName?: string;
   description: string;
-  email?: string;
   deadline?: string; // yyyy-mm-dd dari input tanggal
   budgetRange?: string;
   referenceUrl?: string;
@@ -18,7 +17,7 @@ export function formatDeadline(iso: string): string {
   return month ? `${Number(m[3])} ${month} ${m[1]}` : iso;
 }
 
-// Pesan yang dikirim lewat WhatsApp atau email. Baris opsional dilewati bila kosong.
+// Pesan yang dikirim lewat WhatsApp. Baris opsional dilewati bila kosong.
 export function buildInquiryMessage(i: InquiryMessageInput): string {
   const lines = [
     "Halo Bantuin Studio, saya ingin konsultasi.",
@@ -30,11 +29,6 @@ export function buildInquiryMessage(i: InquiryMessageInput): string {
     ...(i.deadline ? [`Deadline: ${formatDeadline(i.deadline)}`] : []),
     ...(i.budgetRange ? [`Kisaran budget: ${i.budgetRange}`] : []),
     ...(i.referenceUrl ? [`Link referensi: ${i.referenceUrl}`] : []),
-    ...(i.email ? [`Email: ${i.email}`] : []),
   ];
   return lines.join("\n");
-}
-
-export function mailtoUrl(email: string, subject: string, body: string): string {
-  return `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }

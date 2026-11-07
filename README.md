@@ -1,7 +1,7 @@
 # Bantuin Studio
 
 Website company profile dan katalog layanan. **Situs statis**: tanpa server, database, atau admin. Formulir konsultasi
-mengubah isiannya menjadi pesan WhatsApp (dan opsi email) ke Bantuin Studio.
+mengubah isiannya menjadi pesan WhatsApp ke Bantuin Studio.
 
 Stack: Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4, Zod.
 
@@ -14,7 +14,7 @@ npm run dev          # http://localhost:3000
 Perintah lain: `npm run build`, `npm start` (hasil build), `npm run typecheck`, `npm run lint`, `npm test`.
 
 ## Konfigurasi
-Nilai bawaan ada di `src/lib/site.ts` (nama, tagline, nomor WhatsApp, email). Untuk menimpanya, salin `.env.example`
+Nilai bawaan ada di `src/lib/site.ts` (nama, tagline, nomor WhatsApp). Untuk menimpanya, salin `.env.example`
 ke `.env.local`:
 
 | Variabel | Fungsi |

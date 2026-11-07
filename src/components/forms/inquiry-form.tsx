@@ -6,10 +6,10 @@ import { pickDefaults } from "@/lib/contact";
 import { site } from "@/lib/site";
 import { inquirySchema } from "@/lib/validation/inquiry";
 import { whatsAppUrl } from "@/lib/whatsapp/link";
-import { buildInquiryMessage, mailtoUrl } from "@/lib/whatsapp/message";
+import { buildInquiryMessage } from "@/lib/whatsapp/message";
 
 type Category = { slug: string; name: string; services: { slug: string; name: string }[] };
-type Sent = { whatsapp: string | null; email: string } | null;
+type Sent = { whatsapp: string | null } | null;
 
 const budgets = ["Belum tahu", "Di bawah Rp100.000", "Rp100.000 - Rp500.000", "Rp500.000 - Rp1.000.000", "Di atas Rp1.000.000"];
 
@@ -58,7 +58,6 @@ export function InquiryForm({ categories }: { categories: Category[] }) {
     const text = (k: string) => String(fd.get(k) ?? "");
     const parsed = inquirySchema.safeParse({
       name: text("name"),
-      email: text("email"),
       categorySlug: text("categorySlug"),
       serviceSlug: text("serviceSlug"),
       description: text("description"),
@@ -83,14 +82,12 @@ export function InquiryForm({ categories }: { categories: Category[] }) {
       categoryName: category?.name ?? d.categorySlug,
       serviceName: service?.name,
       description: d.description,
-      email: d.email,
       deadline: d.deadline,
       budgetRange: d.budgetRange,
       referenceUrl: d.referenceUrl,
     });
     const whatsapp = whatsAppUrl(site.whatsappNumber, message);
-    const email = mailtoUrl(site.email, `Konsultasi ${service?.name ?? category?.name ?? "Bantuin Studio"}`, message);
-    setSent({ whatsapp, email });
+    setSent({ whatsapp });
     // Dipanggil langsung dari aksi kirim (gestur pengguna) agar tidak diblokir pop-up blocker.
     if (whatsapp) window.open(whatsapp, "_blank", "noopener,noreferrer");
   }
@@ -108,15 +105,12 @@ export function InquiryForm({ categories }: { categories: Category[] }) {
               Buka WhatsApp
             </a>
           )}
-          <a href={sent.email} className="btn btn-secondary">
-            Kirim lewat email
-          </a>
           <button type="button" onClick={() => setSent(null)} className="btn btn-secondary">
             Ubah isian
           </button>
         </div>
         <p className="mt-4 text-xs">
-          Pesan hanya terkirim setelah kamu menekan kirim di WhatsApp atau email. Situs ini tidak menyimpan isian formulirmu.
+          Pesan hanya terkirim setelah kamu menekan kirim di WhatsApp. Situs ini tidak menyimpan isian formulirmu.
         </p>
       </div>
     );
@@ -201,12 +195,6 @@ export function InquiryForm({ categories }: { categories: Category[] }) {
         <input id="referenceUrl" name="referenceUrl" type="url" placeholder="https://" className={field} {...aria("referenceUrl")} />
         <p className="mt-1 text-xs text-ink-2">Pastikan akses link sudah dibuka. Jangan sertakan password atau data sensitif.</p>
         {err("referenceUrl")}
-      </div>
-
-      <div>
-        <label htmlFor="email" className="text-sm font-semibold text-ink">Email (opsional)</label>
-        <input id="email" name="email" type="email" autoComplete="email" className={field} {...aria("email")} />
-        {err("email")}
       </div>
 
       <div>

@@ -11,13 +11,6 @@ const optionalText = (max: number) =>
 // Validasi di browser sebelum pesan WhatsApp disusun. Situs ini statis: tidak ada server yang menyimpan isian.
 export const inquirySchema = z.object({
   name: z.string().trim().min(2, "Nama minimal 2 karakter").max(80),
-  email: z
-    .string()
-    .trim()
-    .max(120)
-    .optional()
-    .transform((v) => (v ? v : undefined))
-    .refine((v) => !v || z.email().safeParse(v).success, "Format email tidak valid"),
   categorySlug: z.string().trim().min(1, "Pilih kategori layanan"),
   serviceSlug: optionalText(80),
   description: z.string().trim().min(10, "Ceritakan kebutuhanmu minimal 10 karakter").max(1500),
